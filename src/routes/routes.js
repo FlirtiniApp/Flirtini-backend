@@ -1,0 +1,13 @@
+const express = require('express');
+const router = express.Router();
+
+router.use('/account', require('./accountRoutes'));
+router.use('/alcohol', require('./alcoholRoutes'));
+router.use('/bar', require('./barRoutes'));
+router.use('/list', require('./listRoutes'));
+
+router.get("/test", (req, res) => {
+    res.send("router works!");
+})
+
+module.exports = router;
