@@ -1,5 +1,5 @@
 const test = (req, res) => {
-    res.send("accounts works!")
+    res.send("users works!")
 }
 
 module.exports = {
