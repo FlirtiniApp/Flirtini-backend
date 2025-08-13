@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
-router.use('/account', require('./accountRoutes'));
+router.use('/user', require('./userRoutes'));
 router.use('/alcohol', require('./alcoholRoutes'));
 router.use('/bar', require('./barRoutes'));
 router.use('/list', require('./listRoutes'));
