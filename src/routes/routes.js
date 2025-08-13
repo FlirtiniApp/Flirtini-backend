@@ -10,4 +10,8 @@ router.get("/test", (req, res) => {
     res.send("router works!");
 })
 
+router.get("/mongotest", (req, res) => {
+    res.send(`mongo URL from env file: ${process.env.MONGO_URL}`);
+})
+
 module.exports = router;
