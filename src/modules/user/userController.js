@@ -1,4 +1,5 @@
 const User = require("./userModel");
+const jwt = require('jsonwebtoken');
 
 const test = (req, res) => {
     res.send("users works!")
@@ -28,7 +29,15 @@ const register = async (req, res) => {
         const user = await User.create(req.body);
 
         console.log(`\x1b[33mCreated\x1b[0m user: \x1b[32m${user.login}\x1b[0m at: \x1b[36m${new Date().toLocaleString()}\x1b[0m`);
-        res.status(201).json(user);
+
+        const token = jwt.sign(
+            { id: user._id },
+            process.env.JWT_SECRET,
+            { expiresIn: '30d' }
+        );
+
+        console.log(`\x1b[35mSuccesfully registered\x1b[0m`);
+        res.status(201).json({ message: "successfully registered", token: token });
     } catch (error) {
         res.status(500).json({ message: error.message });
     }
