@@ -43,8 +43,33 @@ const register = async (req, res) => {
     }
 }
 
+const login = async (req, res) => {
+    try {
+        const user = req.body;
+        console.log(user);
+
+        const userDB = await User.findOne({ login: user.login, password: user.password });
+        console.log(userDB);
+
+        if (userDB) {
+            const token = jwt.sign(
+                { id: user._id },
+                process.env.JWT_SECRET,
+                { expiresIn: '30d' }
+            );
+
+            res.status(200).json({ message: "Successfully logged in", token: token });
+        }
+        else res.status(401).json({ message: "User with given login and password does not exist" });
+
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+}
+
 module.exports = {
     test,
     getUserById,
-    register
+    register,
+    login
 };

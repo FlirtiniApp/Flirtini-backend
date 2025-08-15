@@ -73,4 +73,14 @@ const registerValidation = [
         .matches(/^\+?[0-9\s\-]{9,12}$/).withMessage('Invalid phone number')
 ];
 
-module.exports = { registerValidation };
+const loginValidation = [
+    body('login')
+        .trim()
+        .notEmpty().withMessage('Login is required'),
+
+    body('password')
+        .trim()
+        .notEmpty().withMessage('Password is required')
+]
+
+module.exports = { registerValidation, loginValidation };
