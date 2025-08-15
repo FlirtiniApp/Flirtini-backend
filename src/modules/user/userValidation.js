@@ -12,13 +12,13 @@ const registerValidation = [
         .isLength({ min: 1, max: 30 }).withMessage('Last name must be 1-30 characters'),
 
     body('login')
-        .trim()
         .notEmpty().withMessage('Login is required')
+        .matches(/^\S+$/).withMessage('Login must not contain spaces')
         .isLength({ min: 4, max: 30 }).withMessage('Login must be 4-20 characters'),
 
     body('password')
-        .trim()
         .notEmpty().withMessage('Password is required')
+        .matches(/^\S+$/).withMessage('Password must not contain spaces')
         .custom((value) => {
             if (value.length < 8) {
                 throw new Error('Password must be at least 8 characters long');
@@ -75,11 +75,9 @@ const registerValidation = [
 
 const loginValidation = [
     body('login')
-        .trim()
         .notEmpty().withMessage('Login is required'),
 
     body('password')
-        .trim()
         .notEmpty().withMessage('Password is required')
 ]
 
