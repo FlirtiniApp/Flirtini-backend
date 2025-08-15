@@ -25,7 +25,3 @@ mongoose.connect(process.env.MONGO_URL)
         console.log("\x1b[41mFailed to connect to database\x1b[0m");
         console.log(err);
     });
-
-app.get('/', (req, res) => {
-    res.send('Hello World!');
-})
