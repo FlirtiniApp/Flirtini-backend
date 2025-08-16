@@ -76,7 +76,7 @@ const login = async (req, res) => {
 const profile = async (req, res) => {
     try {
         console.log("Searching for user with given id...");
-        const user = await User.findById(req.user.id);
+        const user = await User.findById(req.authuser.id);
 
         if (user) {
             const userToSend = {

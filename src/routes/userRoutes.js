@@ -10,6 +10,7 @@ router.get("/test", userController.test);
 router.post("/register", registerValidation, validate, userController.register);
 router.post("/login", loginValidation, validate, userController.login);
 router.get("/profile", authenticateToken, userController.profile);
-router.get("/:id", userController.getUserById); // Can also pass "all" as id param to retrieve all users.
+//TODO check if route below is needed ANYWHERE
+//router.get("/:id", userController.getUserById); // Can also pass "all" as id param to retrieve all users.
 
 module.exports = router;
