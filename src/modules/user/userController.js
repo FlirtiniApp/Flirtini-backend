@@ -54,7 +54,7 @@ const login = async (req, res) => {
         if (userDB) {
             console.log("\x1b[93mUser found\x1b[0m");
             const token = jwt.sign(
-                { id: user._id },
+                { id: userDB._id },
                 process.env.JWT_SECRET,
                 { expiresIn: '30d' }
             );
@@ -73,9 +73,38 @@ const login = async (req, res) => {
     }
 }
 
+const profile = async (req, res) => {
+    try {
+        console.log("Searching for user with given id...");
+        const user = await User.findById(req.user.id);
+
+        if (user) {
+            const userToSend = {
+                login: user.login,
+                firstName: user.firstName,
+                lastName: user.lastName,
+                birthDate: user.birthDate,
+                email: user.email
+            }
+            console.log("\x1b[93mUser found\x1b[0m");
+            res.status(200).json({ message: "Successfully found user", user: userToSend });
+        }
+        else {
+            console.log("\x1b[31mUser not found\x1b[0m");
+            res.status(404).json({ message: "User with given id does not exist" });
+        }
+
+    }
+    catch (error) {
+        console.log("\x1b[41mError occurred while trying to load user\x1b[0m");
+        res.status(500).json({ message: error.message });
+    }
+}
+
 module.exports = {
     test,
     getUserById,
     register,
-    login
+    login,
+    profile
 };
