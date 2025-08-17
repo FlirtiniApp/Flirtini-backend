@@ -39,26 +39,6 @@ const addToFavourites = async (req, res) => {
         console.log("\x1b[31mUser not found\x1b[0m");
         res.status(404).json({ message: "User with given id does not exist" });
     }
-
-    // request.get(
-    //     `http://${process.env.MONGO_IP}:3000/users/${userId}`,
-    //     (getError, getResponse, getBody) => {
-    //         request.put(
-    //             {
-    //                 url: `http://${process.env.MONGO_IP}:3000/users/${userId}`,
-    //                 json: {
-    //                     favouriteDrinks: a1,
-    //                 },
-    //             },
-    //             (putError, putResponse, putBody) => {
-    //                 if (putError) {
-    //                     console.error("Update error:", putError);
-    //                     return res.status(500).send("Internal Server Error");
-    //                 }
-    //             }
-    //         );
-    //     }
-    // );
 }
 
 module.exports = {
