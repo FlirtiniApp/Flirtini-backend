@@ -4,7 +4,7 @@ const router = express.Router();
 router.use('/user', require('./userRoutes'));
 router.use('/alcohol', require('./alcoholRoutes'));
 router.use('/bar', require('./barRoutes'));
-router.use('/list', require('./listRoutes'));
+router.use('/favourite', require('./favouriteRoutes'));
 
 router.get("/test", (req, res) => {
     res.send("router works!");
