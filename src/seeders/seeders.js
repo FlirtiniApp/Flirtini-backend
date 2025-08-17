@@ -4,6 +4,7 @@ const seedUsers = require("./userSeeder");
 
 const runSeeders = async () => {
     // Connect to DB
+    console.log("Connecting to database...");
     await mongoose.connect(process.env.MONGO_URL)
         .then(() => {
             console.log("\x1b[93mConnected to database\x1b[0m");
