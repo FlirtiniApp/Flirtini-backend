@@ -29,7 +29,7 @@ const seedUsers = async () => {
                 "lastName": "Doe",
                 "birthDate": "2006-01-14T00:00:00.000Z",
                 "favouriteDrinks": [
-                    { drinkId: 3, drinkName: 'big test' }
+                    { drinkId: 3, drinkName: 'temp' }
                 ]
             },
             {
