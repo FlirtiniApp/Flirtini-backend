@@ -27,7 +27,10 @@ const seedUsers = async () => {
                 "email": "john@doe.flirtini",
                 "firstName": "John",
                 "lastName": "Doe",
-                "birthDate": "2006-01-14T00:00:00.000Z"
+                "birthDate": "2006-01-14T00:00:00.000Z",
+                "favouriteDrinks": [
+                    { drinkId: 3, drinkName: 'big test' }
+                ]
             },
             {
                 "login": "jankowalski",
