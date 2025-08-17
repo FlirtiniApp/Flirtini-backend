@@ -41,7 +41,28 @@ const addToFavourites = async (req, res) => {
     }
 }
 
+const getFavourites = async (req, res) => {
+
+    console.log("Searching for user with given id...");
+    const user = await User.findById(req.authuser.id);
+
+    if (user) {
+        console.log("\x1b[93mUser found\x1b[0m");
+        console.log(user);
+
+        const favourites = user.favouriteDrinks;
+
+        res.status(200).json({ message: "Successfully retrieved user' favourites", favourites: favourites })
+
+    }
+    else {
+        console.log("\x1b[31mUser not found\x1b[0m");
+        res.status(404).json({ message: "User with given id does not exist" });
+    }
+}
+
 module.exports = {
     test,
-    addToFavourites
+    addToFavourites,
+    getFavourites
 };
