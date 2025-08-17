@@ -14,7 +14,6 @@ const addToFavourites = async (req, res) => {
 
     if (user) {
         console.log("\x1b[93mUser found\x1b[0m");
-        console.log(user);
 
         let a = [...user.favouriteDrinks, { drinkId, drinkName }];
         let a1 = Array.from(
@@ -26,7 +25,6 @@ const addToFavourites = async (req, res) => {
 
         if (updatedUser) {
             console.log("\x1b[93mAdded to favourites\x1b[0m");
-            console.log(updatedUser);
             res.status(200).json({ message: "Successfully added to favourites" });
         }
         else {
