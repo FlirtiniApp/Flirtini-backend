@@ -15,7 +15,7 @@ const addToFavourites = async (req, res) => {
     if (user) {
         console.log("\x1b[93mUser found\x1b[0m");
 
-        let a = [...user.favouriteDrinks, { drinkId, drinkName }];
+        let a = [{ drinkId, drinkName }, ...user.favouriteDrinks];
         let a1 = Array.from(
             new Map(a.map(item => [item.drinkId, item])).values()
         );
